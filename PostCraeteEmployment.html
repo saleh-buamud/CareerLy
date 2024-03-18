@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,697;1,697&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/heroes/hero-3/assets/css/hero-3.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/employee.css">
+</head>
+<body>
+    <!-- START NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light text-white navbar-light p-3 sticky-top w-100"
+        style="background-color: #222; color: white;">
+        <div class="container">
+            <a href="index.html" class="navbar-brand fw-bold text-primary"><img src="img/White Logo (1).svg"
+                    alt="logo crearre" width="130px"></a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar"> <span class="navbar-toggler-icon">
+                    <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
+                </span></button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">CAREEARLY</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body" style="background-color: #222; color: white;">
+                    <ul class="navbar-nav mx-auto na-w mt-2 ">
+                        <li class="nav-item">
+                            <a class="nav-link active m-xl-2 text-white " aria-current="page" href="#">Find jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link m-xl-2 text-white" href="#">Post jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link m-xl-2 text-white" href="/index.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link m-xl-2 text-white " href="/index.html">Contact</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right mt-2 ">
+                        <div class="d-flex justify-content-center align-items-center gap-1">
+                            <li> <a href="" class="btn-navbar-login" data-mdb-ripple-init>
+                                    login
+                            </li></a>
+                            <li>
+                                <a href=""><button type="button" class="btn-navbar-sinup  m-1 rounded-pill"
+                                        data-mdb-ripple-init>Sin
+                                        up</button></a>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+    </nav>
+ <!-- END NAVBAR -->
+
+ <!-- START SIDBAR -->
+    <div id="wrapper" style="color: white;">
+
+        <aside id="sidebar-wrapper">
+            <div class="sidebar-brand">
+                <h4>Employment</h4>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="active">
+                    <a href="#"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="/PostCraeteEmployment.html"><i class="fa-solid fa-plus"></i>Add post</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa-solid fa-pen-to-square"></i>Edit</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa-solid fa-trash-can"></i>Delete</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa-solid fa-gear"></i>Settings</a>
+                </li>
+            </ul>
+
+        </aside>
+
+        <div id="navbar-wrapper" style="position: fixed;">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a href="#" class="navbar-brand" id="sidebar-toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+
+    </div>  
+    
+    <!-- END SIDBAR -->
+    <h2 style="text-align: center; color: rgb(0, 0, 0); margin-top: 100px;">Post Create</h2>
+    <div class="container my-5 "  style="height:88vh">
+        <div class="row justify-content-center ">
+            <div class="col-lg-9 ">
+                <form method="POST">
+                    <div class="row g-3 ">
+                        <div class="col-md-12 ">
+                            <label for="Name-Employee " class="form-label ">Name Employment</label>
+                            <input type="text " class="form-control " id="Name-Employee " name="Name-Employee" required>
+                        </div>
+                        <div class="col-12 ">
+                            <label for="your-message " class="form-label "></label>
+                            <textarea class="form-control " id="your-message " name="your-message " rows="3 "
+                                required></textarea>
+                        </div>
+                        <div class="col-12 ">
+                            <div class="row ">
+                                <div class="col-md-6 m-auto ">
+                                    <button type="submit " class="btn btn-outline-light  w-100 fw-bold " style="background-color: #0A1D56; color: white;
+                                    
+                                    
+                        ">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End of FOOTER -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js "
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL "
+        crossorigin="anonymous "></script>
+    <script src="/Javascript/main.js "></script>
+
+</body>
+
+</html>
