@@ -1,109 +1,97 @@
-function myFunction() {
-  var x = document.getElementById("your-password");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
+const mobileScreen = window.matchMedia("(max-width: 990px )");
+$(document).ready(function () {
+    $(".dashboard-nav-dropdown-toggle").click(function () {
+        $(this).closest(".dashboard-nav-dropdown")
+            .toggleClass("show")
+            .find(".dashboard-nav-dropdown")
+            .removeClass("show");
+        $(this).parent()
+            .siblings()
+            .removeClass("show");
+    });
+    $(".menu-toggle").click(function () {
+        if (mobileScreen.matches) {
+            $(".dashboard-nav").toggleClass("mobile-show");
+        } else {
+            $(".dashboard").toggleClass("dashboard-compact");
+        }
+    });
+});
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
   }
 }
-//  Get form elements
-// // const form = document.querySelector('form');
-// // const nameInput = document.getElementById('your-name');
-// // const surnameInput = document.getElementById('your-surname');
-// // const emailInput = document.getElementById('your-email');
-// // const messageInput = document.getElementById('your-message');
-
-//  Listen for form submission
-// // form.addEventListener('submit', function(event) {
-// //   event.preventDefault();
-
-// //   // Validate form fields
-// //   if (nameInput.value === '') {
-// //     alert('Please enter your name');
-// //     return false;
-// //   }
-
-// //   if (surnameInput.value === '') {
-// //     alert('Please enter your surname');
-// //     return false;
-// //   }
-
-// //   if (emailInput.value === '') {
-// //     alert('Please enter your email');
-// //     return false;
-//   // }
-
-//   // if (!validateEmail(emailInput.value)) {
-//   //   alert('Please enter a valid email address');
-//   //   return false;
-//   // }
-
-//   // if (messageInput.value === '') {
-//   //   alert('Please enter your message');
-//   //   return false;
-//   // }
-
-//   // If all fields are valid, submit the form
-// //   alert('Form submitted successfully');
-// //   return true;
-// // });
-
-// // Function to validate email format
-// // function validateEmail(email) {
-// //   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-// //   return re.test(String(email).toLowerCase());
-// // }
-
-// // Function to show/hide password
-// // function myFunction() {
-// //   const passwordInput = document.getElementById('your-password');
-// //   const showCheckbox = document.querySelector('input[type=checkbox]');
-
-// //   if (showCheckbox.checked) {
-// //     passwordInput.type = 'text';
-// //   } else {
-// //     passwordInput.type = 'password';
-// //   }
-// // }
-//  Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll('.needs-validation')
-
-  // Loop over them and prevent submission
-  Array.from(forms).forEach(form => {
-    form.addEventListener('submit', event => {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
-
-      form.classList.add('was-validated')
-    }, false)
-  })
-})()
-// document.addEventListener("DOMContentLoaded", function(event) {
-//    wNavbar('header-toggle','nav-bar','body-pd','header')
-  
-//   /*===== LINK ACTIVE =====*/
-//   const linkColor = document.querySelectorAll('.nav_link')
-  
-//   function colorLink(){
-//   if(linkColor){
-//   linkColor.forEach(l=> l.classList.remove('active'))
-//   this.classList.add('active')
-//   }
-//   }
-//   linkColor.forEach(l=> l.addEventListener('click', colorLink))
-  
-//    // Your code to run since DOM is loaded and ready
-//   });
-  const $button  = document.querySelector('#sidebar-toggle');
-const $wrapper = document.querySelector('#wrapper');
-
-$button.addEventListener('click', (e) => {
-  e.preventDefault();
-  $wrapper.classList.toggle('toggled');
-});
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
